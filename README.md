@@ -1,5 +1,5 @@
-# Inmobiliaria React App
-Esta es una aplicación web sencilla desarrollada en React para una inmobiliaria. La aplicación permite a los usuarios listar propiedades, ver detalles de una propiedad, contactar al agente o propietario de la propiedad, y publicar propiedades.
+# Hotel App
+Esta es una aplicación web sencilla desarrollada en React para gestionar un Hotel. La aplicación permite a los usuarios listar habitaciones, ver detalles de una habitacion y hacer reservas.
 
 ## Instalación
 1. Clona este repositorio en tu máquina local utilizando Git:
