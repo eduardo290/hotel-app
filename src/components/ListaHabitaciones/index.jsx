@@ -39,7 +39,7 @@ function PaginaPrincipal() {
     }
 
     return (
-        <div className="container">
+        <div className="container" data-testid='lista-habitaciones'>
             <header>
                 <h1>Encabezado principal</h1>
                 <nav>
@@ -81,13 +81,13 @@ function PaginaPrincipal() {
                 <section id="section3">
                     <h2>Sección 3</h2>
                     <p>Este es un párrafo de la sección 3</p>
-                    <button id="btnMas" onClick={showMore}>
+                    <button data-testid='btn-mas' id="btnMas" onClick={showMore}>
                         {flag ? 'Mostrar más' : 'Mostrar menos'}
                     </button>
                 </section>
             </main>
             <aside>
-                <img src={Logo} />
+                <img src={Logo} alt="logo" />
                 <h2>Barra lateral</h2>
                 <ul>
                     <li>

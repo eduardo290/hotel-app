@@ -1,6 +1,6 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import ListaPropiedades from './components/ListaPropiedades'
-import Propiedad from './components/Propiedad'
+import ListaHabitaciones from './components/ListaHabitaciones'
+import Habitacion from './components/Habitacion'
 import Layout from "./Layout"
 import './App.css';
 
@@ -9,11 +9,11 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <ListaPropiedades />,
+      element: <ListaHabitaciones />,
     },
     {
       path: "/detalle/:id",
-      element: <Propiedad />,
+      element: <Habitacion />,
     },
   ]);
 
