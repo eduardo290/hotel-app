@@ -1,6 +1,6 @@
 import React from 'react'
 
-function Propiedad() {
+function Propiedad({ children }) {
     return (
         <div>Propiedad</div>
     )

@@ -1,13 +1,14 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import ListaPropiedades from './components/ListaPropiedades'
 import Propiedad from './components/Propiedad'
+import Layout from "./Layout"
 import './App.css';
+
 
 function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-
       element: <ListaPropiedades />,
     },
     {
@@ -17,7 +18,9 @@ function App() {
   ]);
 
   return (
-    <RouterProvider router={router} />
+    <Layout>
+      <RouterProvider router={router} />
+    </Layout>
   );
 }
 
