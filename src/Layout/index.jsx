@@ -7,7 +7,7 @@ import SearchIcon from '@mui/icons-material/Search'
 function Layout({ children }) {
     return (
         <>
-            <AppBar position='static'>
+            {/* <AppBar position='static'>
                 <Toolbar>
                     <IconButton
                         size="large"
@@ -35,8 +35,8 @@ function Layout({ children }) {
                         />
                     </Search>
                 </Toolbar>
-            </AppBar>
-            <Container maxWidth="md">
+            </AppBar> */}
+            <Container maxWidth="xl">
                 <Box >
                     {children}
                 </Box>
