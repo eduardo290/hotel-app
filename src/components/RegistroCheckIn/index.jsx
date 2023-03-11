@@ -33,33 +33,32 @@ function RegistroCheckIn(props) {
 
   return (
     <div>
+      <form onSubmit={handleSubmit}>
+        <label>
+          Nombre:
+          <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} />
+        </label>
+        <label>
+          Apellido:
+          <input type="text" value={apellido} onChange={(e) => setApellido(e.target.value)} />
+        </label>
+        <label>
+          Habitación:
+          <input type="text" value={habitacion} onChange={(e) => setHabitacion(e.target.value)} />
+        </label>
+        <label>
+          Fecha de ingreso:
+          <input type="date" value={fechaIngreso} onChange={(e) => setFechaIngreso(e.target.value)} />
+        </label>
+        <label>
+          Fecha de fin:
+          <input type="date" value={fechaFin} onChange={(e) => setFechaFin(e.target.value)} />
+        </label>
+        <button type="submit">Registrar Check-in</button>
+      </form>
       {enviado ? (
         <p>Se ha confirmado el check-in para {nombre} {apellido} en la habitación {habitacion}.</p>
-      ) : (
-        <form onSubmit={handleSubmit}>
-          <label>
-            Nombre:
-            <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} />
-          </label>
-          <label>
-            Apellido:
-            <input type="text" value={apellido} onChange={(e) => setApellido(e.target.value)} />
-          </label>
-          <label>
-            Habitación:
-            <input type="text" value={habitacion} onChange={(e) => setHabitacion(e.target.value)} />
-          </label>
-          <label>
-            Fecha de ingreso:
-            <input type="date" value={fechaIngreso} onChange={(e) => setFechaIngreso(e.target.value)} />
-          </label>
-          <label>
-            Fecha de fin:
-            <input type="date" value={fechaFin} onChange={(e) => setFechaFin(e.target.value)} />
-          </label>
-          <button type="submit">Registrar Check-in</button>
-        </form>
-      )}
+      ) : null}
       <ListaCheckIn checkIns={checkIns} />
     </div>
   );
@@ -73,17 +72,20 @@ function ListaCheckIn(props) {
   const { checkIns } = props;
 
   return (
-    <ul className="lista-checkin">
-      {checkIns.map((checkIn, index) => (
-        <li key={index}>
-          {checkIn.nombre} {checkIn.apellido} - Habitación {checkIn.habitacion}
-          <br />
-          Fecha de ingreso: {checkIn.fechaIngreso}
-          <br />
-          Fecha de fin: {checkIn.fechaFin}
-        </li>
-      ))}
-    </ul>
+    <div>
+      <h2>Check-ins registrados:</h2>
+      <ul className="lista-checkin">
+        {checkIns.map((checkIn, index) => (
+          <li key={index}>
+            {checkIn.nombre} {checkIn.apellido} - Habitación {checkIn.habitacion}
+            <br />
+            Fecha de ingreso: {checkIn.fechaIngreso}
+            <br />
+            Fecha de fin: {checkIn.fechaFin}
+          </li>
+        ))}
+      </ul>
+    </div>
   );
 }
 
