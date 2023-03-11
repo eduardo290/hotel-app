@@ -1,53 +1,47 @@
 import React, { useState } from 'react';
-import './style.css';
+import PropTypes from 'prop-types';
 
 function RegistroCheckIn(props) {
-  const [name, setName] = useState('');
-  const [email, setEmail] = useState('');
-  const [phone, setPhone] = useState('');
+  const [nombre, setNombre] = useState('');
+  const [apellido, setApellido] = useState('');
+  const [habitacion, setHabitacion] = useState('');
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    props.onSubmit({ name, email, phone });
+    const checkInData = {
+      nombre,
+      apellido,
+      habitacion
+    };
+    if (props.onSubmit) {
+      props.onSubmit(checkInData);
+    }
+    setNombre('');
+    setApellido('');
+    setHabitacion('');
   };
 
   return (
-    <div className="registro-checkin-container">
-      <h2>Registro Check In</h2>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="name">Name:</label>
-        <input
-          className="form-input"
-          type="text"
-          id="name"
-          value={name}
-          onChange={(event) => setName(event.target.value)}
-          required
-        />
-        <label htmlFor="email">Email:</label>
-        <input
-          className="form-input"
-          type="email"
-          id="email"
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
-          required
-        />
-        <label htmlFor="phone">Phone:</label>
-        <input
-          className="form-input"
-          type="tel"
-          id="phone"
-          value={phone}
-          onChange={(event) => setPhone(event.target.value)}
-          required
-        />
-        <button className="form-submit" type="submit">
-          Check In
-        </button>
-      </form>
-    </div>
+    <form onSubmit={handleSubmit}>
+      <label>
+        Nombre:
+        <input type="text" value={nombre} onChange={(e) => setNombre(e.target.value)} />
+      </label>
+      <label>
+        Apellido:
+        <input type="text" value={apellido} onChange={(e) => setApellido(e.target.value)} />
+      </label>
+      <label>
+        Habitación:
+        <input type="text" value={habitacion} onChange={(e) => setHabitacion(e.target.value)} />
+      </label>
+      <button type="submit">Registrar Check-in</button>
+    </form>
   );
 }
+
+RegistroCheckIn.propTypes = {
+  onSubmit: PropTypes.func
+};
 
 export default RegistroCheckIn;
