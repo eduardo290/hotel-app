@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-
+import "./styles.css"
 function Habitacion({ tipo, precio, children }) {
   const [reservado, setReservado] = useState(false);
   const [imagen, setImagen] = useState(null);
