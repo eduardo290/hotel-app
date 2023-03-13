@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 
 function Habitacion({ tipo, precio, children }) {
   const [reservado, setReservado] = useState(false);
+  const [imagen, setImagen] = useState(null);
 
   useEffect(() => {
     const reservasGuardadas = JSON.parse(
@@ -12,6 +13,16 @@ function Habitacion({ tipo, precio, children }) {
     );
     setReservado(estaReservado);
   }, [tipo]);
+
+  useEffect(() => {
+    fetch('https://picsum.photos/200')
+      .then(response => {
+        setImagen(response.url);
+      })
+      .catch(error => {
+        console.error('Error obteniendo la imagen', error);
+      });
+  }, []);
 
   function reservar() {
     const reservasGuardadas = JSON.parse(
@@ -24,9 +35,10 @@ function Habitacion({ tipo, precio, children }) {
 
   return (
     <div className={`habitacion ${reservado ? "reservado" : ""}`}>
+      {imagen && <img src={imagen} alt="habitación" />}
       {children}
       <button onClick={reservar} disabled={reservado}>
-        {reservado ? "Reservado" : "Reservar por $"+precio}
+        {reservado ? "Reservado" : "Reservar por $" + precio}
       </button>
     </div>
   );
