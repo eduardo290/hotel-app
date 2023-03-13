@@ -2,6 +2,7 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom';
 import ListaHabitaciones from './components/ListaHabitaciones'
 import Habitacion from './components/Habitacion'
 import RegistroCheckIn from './components/RegistroCheckIn'
+import PaginaCheckIn from './components/PaginaCheckIn'
 import Layout from "./Layout"
 import './App.css';
 
@@ -19,6 +20,10 @@ function App() {
     {
       path: "/checkIn",
       element: <RegistroCheckIn/>,
+    },
+    {
+      path: "/PaginaCheckIn",
+      element: <PaginaCheckIn/>,
     }
   ]);
 

@@ -1,0 +1,21 @@
+.tabla-checkin {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.tabla-checkin td, .tabla-checkin th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+.tabla-checkin tr:nth-child(even){background-color: #f2f2f2;}
+
+.tabla-checkin tr:hover {background-color: #ddd;}
+
+.tabla-checkin th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #4CAF50;
+  color: white;
+}

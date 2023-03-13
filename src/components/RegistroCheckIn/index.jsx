@@ -56,9 +56,7 @@ function RegistroCheckIn(props) {
         </label>
         <button type="submit">Registrar Check-in</button>
       </form>
-      {enviado ? (
-        <p>Se ha confirmado el check-in para {nombre} {apellido} en la habitación {habitacion}.</p>
-      ) : null}
+
       <ListaCheckIn checkIns={checkIns} />
     </div>
   );

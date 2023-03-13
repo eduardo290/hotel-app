@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import Logo from '../../assets/unir.png';
+import Habitacion from '../Habitacion';
 import './styles.css';
 
 function PaginaPrincipal() {
@@ -25,7 +26,7 @@ function PaginaPrincipal() {
 
         for (let i = 0; i < 3; i++) {
             const elemento = document.createElement('li');
-            elemento.innerHTML = 'Elemento ' + i;
+            elemento.innerHTML = <Habitacion key={i}>Habitación {i + 1}</Habitacion>;
             lista.appendChild(elemento);
         }
 
@@ -39,9 +40,9 @@ function PaginaPrincipal() {
     }
 
     return (
-        <div className="container" data-testid='lista-habitaciones'>
+        <div className="container" data-testid='pagina-principal'>
             <header>
-                <h1>Encabezado principal</h1>
+                <h1>Hotel React</h1>
                 <nav>
                     <ul>
                         <li>
@@ -58,25 +59,13 @@ function PaginaPrincipal() {
             </header>
             <main>
                 <section>
-                    <h2>Sección 1</h2>
-                    <p>Este es un párrafo de la sección 1.</p>
-                    <ul>
-                        <li>Elemento de lista 1</li>
-                        <li>Elemento de lista 2</li>
-                        <li>Elemento de lista 3</li>
-                    </ul>
-                </section>
-                <section>
-                    <h2>Sección 2</h2>
-                    <p>Este es un párrafo de la sección 2.</p>
-                    <ol>
-                        <li>Elemento de lista 1</li>
-                        <li>Elemento de lista 2</li>
-                        <li>Elemento de lista 3</li>
-                    </ol>
-                    <blockquote>
-                        <p>Este es un bloque de cita.</p>
-                    </blockquote>
+                    <h2>Habitaciones disponibles</h2>
+                    <div className="habitaciones">
+                        <Habitacion>Individual</Habitacion>
+                        <Habitacion>Doble</Habitacion>
+                        <Habitacion>Triple</Habitacion>
+                        <Habitacion>Suite</Habitacion>
+                    </div>
                 </section>
                 <section id="section3">
                     <h2>Sección 3</h2>
@@ -86,6 +75,30 @@ function PaginaPrincipal() {
                     </button>
                 </section>
             </main>
+            <aside>
+                <img src={Logo} alt="logo" />
+                <h2>Barra lateral</h2>
+                <ul>
+                    <li>
+                        <a href="#">Enlace 1</a>
+                    </li>
+                    <li>
+                        <a href="#">Enlace 2</a>
+                    </li>
+                    <li>
+                        <a href="#">Enlace 3</a>
+                    </li>
+                </ul>
+                <div className="botones">
+                    <button className="boton" id="cambiarColor" onClick={cambiarColor}>
+                        Cambiar color de fondo
+                    </button>
+                    <button className="boton" id="cambiarTamanio" onClick={cambiarTamanio}>
+                        Cambiar tamaño de letra
+                    </button>
+                    <button className="bot"></button>
+                </div>
+            </aside>
             <aside>
                 <img src={Logo} alt="logo" />
                 <h2>Barra lateral</h2>
@@ -118,5 +131,4 @@ function PaginaPrincipal() {
         </div>
     )
 }
-
 export default PaginaPrincipal
