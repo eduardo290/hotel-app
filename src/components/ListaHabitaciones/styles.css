@@ -1,112 +1,212 @@
-.container {
-    font-family: 'Roboto', sans-serif;
-    background-color: #F5F5F5;
+/* Estilos generales */
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+  }
+  
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+  }
+  
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+  }
+  
+  ul {
     margin: 0;
     padding: 0;
-}
-
-header {
-    background-color: #263238;
-    color: #FFF;
-    padding: 10px;
-}
-
-h1,
-h2 {
-    font-weight: normal;
+    list-style: none;
+  }
+  
+  a {
+    text-decoration: none;
+    color: #333;
+  }
+  
+  a:hover {
+    color: #777;
+  }
+  
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  nav ul {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  nav li {
+    margin-left: 20px;
+  }
+  
+  main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding-top: 20px;
+  }
+  
+  section {
+    flex-basis: 49%;
+    margin-bottom: 40px;
+  }
+  
+  h2 {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .habitaciones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+  }
+  
+  .instalaciones {
+    display: flex;
+    gap: 40px;
+  }
+  
+  .instalaciones div {
+    flex-basis: 33.33%;
+  }
+  
+  section#section3 {
+    text-align: center;
+  }
+  
+  section#section3 ul {
+    margin-top: 20px;
+  }
+  
+  section#section3 button {
+    border: none;
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  section#section3 button:hover {
+    background-color: #777;
+  }
+  
+  footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid #ccc;
+  }
+  
+  footer img {
+    height: 40px;
+  }
+  
+  footer p {
     margin: 0;
-}
-
-nav ul {
+    font-size: 14px;
+  }
+  
+  /* Estilos de las habitaciones */
+  .habitacion {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 20px;
+    flex-basis: calc(50% - 10px);
+  }
+  
+  .habitacion h3 {
+    margin-top: 0;
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+  }
+  
+  .habitacion p {
+    margin-top: 0;
+    font-size: 16px;
+    margin-bottom: 10px;
+  }
+  
+  .habitacion ul {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  .habitacion li {
+    margin-bottom: 10px;
+  }
+  
+  .habitacion li:before {
+    content: "•";
+    margin-right: 5px;
+    color: #333;
+  }
+  
+  .habitacion .precio {
+    margin-top: 10px;
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+  }
+  
+  .habitacion .precio span {
+    font-size: 16px;
+    font-weight: normal;
+    color: #777;
+  }
+  
+  .habitacion {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    border: 1px solid #ccc;
+    margin-bottom: 20px;
+  }
+  
+  .habitacion h3 {
+    font-size: 24px;
+    margin-bottom: 10px;
+  }
+  
+  .habitacion p {
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+  
+  .habitacion ul {
     list-style: none;
     margin: 0;
     padding: 0;
-}
-
-nav li {
-    display: inline-block;
-    margin-right: 10px;
-}
-
-nav li:last-child {
-    margin-right: 0;
-}
-
-nav a {
-    color: #FFF;
-    text-decoration: none;
-}
-
-main {
-    margin: 20px;
-}
-
-section {
-    margin-bottom: 20px;
-}
-
-ul,
-ol {
-    margin-top: 0;
-    margin-bottom: 10px;
-}
-
-aside {
-    background-color: #E0E0E0;
-    padding: 10px;
-    position: absolute;
-    right: 0px;
-    top: 100px;
-    width: 400px;
-    height: 300px;
-}
-
-img {
-    margin: 10px;
-}
-
-footer {
-    background-color: #263238;
-    color: #FFF;
-    padding: 10px;
-    text-align: center;
-}
-
-.listaDinamica {
-    color: orange;
-}
-
-.botones {
-    display: flex;
-    justify-content: space-between;
-}
-
-.boton {
-    width: 150px;
-    font-size: 12px;
-    margin: 2px 2px;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-input,
-textarea {
-    padding: 5px;
-    margin-bottom: 10px;
-    border-radius: 5px;
-    border: 1px solid #ccc;
+  }
+  
+  .habitacion li {
     font-size: 16px;
-}
-
-button[type="submit"] {
-    padding: 10px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    font-size: 16px;
-}
+    margin-bottom: 5px;
+  }
+  
+  .habitacion img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+  }  

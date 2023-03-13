@@ -1,23 +1,35 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from "react";
 
-function Habitacion({ nombre, capacidad, precio, reservado }) {
-const [habitacionReservada, setHabitacionReservada] = useState(reservado);
+function Habitacion({ tipo, precio, children }) {
+  const [reservado, setReservado] = useState(false);
 
-const reservarHabitacion = () => {
-setHabitacionReservada(true);
-};
+  useEffect(() => {
+    const reservasGuardadas = JSON.parse(
+      localStorage.getItem("reservas") || "[]"
+    );
+    const estaReservado = reservasGuardadas.some(
+      (reserva) => reserva.tipo === tipo
+    );
+    setReservado(estaReservado);
+  }, [tipo]);
 
-return (
-<div>
-<h3>{nombre}</h3>
-<p>Capacidad: {capacidad}</p>
-<p>Precio: {precio} USD por noche</p>
-<p>Estado: {habitacionReservada ? 'Reservado' : 'Disponible'}</p>
-{!habitacionReservada && (
-<button onClick={reservarHabitacion}>Reservar habitación</button>
-)}
-</div>
-);
+  function reservar() {
+    const reservasGuardadas = JSON.parse(
+      localStorage.getItem("reservas") || "[]"
+    );
+    reservasGuardadas.push({ tipo, precio });
+    localStorage.setItem("reservas", JSON.stringify(reservasGuardadas));
+    setReservado(true);
+  }
+
+  return (
+    <div className={`habitacion ${reservado ? "reservado" : ""}`}>
+      {children}
+      <button onClick={reservar} disabled={reservado}>
+        {reservado ? "Reservado" : "Reservar por $"+precio}
+      </button>
+    </div>
+  );
 }
 
 export default Habitacion;

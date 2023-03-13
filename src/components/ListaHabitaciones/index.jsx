@@ -1,134 +1,137 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Logo from '../../assets/unir.png';
 import Habitacion from '../Habitacion';
 import './styles.css';
+import ReactDOM from 'react-dom';
 
 function PaginaPrincipal() {
-    const [flag, setFlag] = useState(true);
+  const [flag, setFlag] = useState(true);
+  const [habitaciones, setHabitaciones] = useState([]);
 
-    function cambiarColor() {
-        document.body.style.backgroundColor = 'rgb(255, 196, 0)';
+  useEffect(() => {
+    const savedHabitaciones = localStorage.getItem('habitaciones');
+    if (savedHabitaciones) {
+      setHabitaciones(JSON.parse(savedHabitaciones));
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('habitaciones', JSON.stringify(habitaciones));
+  }, [habitaciones]);
+
+  function showMore() {
+    const section3 = document.querySelector('#section3');
+    const ul = document.createElement('ul');
+    ul.className = 'listaDinamica';
+
+    for (let i = 0; i < 6; i++) {
+      const li = document.createElement('li');
+      const habitacion = document.createElement('div');
+      ReactDOM.render(<Habitacion key={i}>Habitación {i + 1}</Habitacion>, habitacion);
+      li.appendChild(habitacion);
+      ul.appendChild(li);
+      setHabitaciones([...habitaciones, `Habitación ${i + 1}`]);
     }
 
-    function cambiarTamanio() {
-        document.body.style.fontSize = '24px';
+    if (flag) {
+      section3.appendChild(ul);
+      setFlag(false);
+    } else {
+      section3.removeChild(section3.lastChild);
+      setFlag(true);
     }
+  }
 
-    function resetStyles() {
-        document.body.style.fontSize = '16px';
-        document.body.style.backgroundColor = 'rgb(255, 255, 255)';
-    }
-
-    function showMore() {
-        const section3 = document.querySelector('#section3');
-        const lista = document.createElement('ul');
-        lista.className = 'listaDinamica';
-
-        for (let i = 0; i < 3; i++) {
-            const elemento = document.createElement('li');
-            elemento.innerHTML = <Habitacion key={i}>Habitación {i + 1}</Habitacion>;
-            lista.appendChild(elemento);
-        }
-
-        if (flag) {
-            section3.appendChild(lista);
-            setFlag(false);
-        } else {
-            section3.childNodes[section3.childNodes.length - 1].remove();
-            setFlag(true);
-        }
-    }
-
-    return (
-        <div className="container" data-testid='pagina-principal'>
-            <header>
-                <h1>Hotel React</h1>
-                <nav>
-                    <ul>
-                        <li>
-                            <a href="#">Inicio</a>
-                        </li>
-                        <li>
-                            <a href="#">Acerca de</a>
-                        </li>
-                        <li>
-                            <a href="/contacto.html">Contacto</a>
-                        </li>
-                    </ul>
-                </nav>
-            </header>
-            <main>
-                <section>
-                    <h2>Habitaciones disponibles</h2>
-                    <div className="habitaciones">
-                        <Habitacion>Individual</Habitacion>
-                        <Habitacion>Doble</Habitacion>
-                        <Habitacion>Triple</Habitacion>
-                        <Habitacion>Suite</Habitacion>
-                    </div>
-                </section>
-                <section id="section3">
-                    <h2>Sección 3</h2>
-                    <p>Este es un párrafo de la sección 3</p>
-                    <button data-testid='btn-mas' id="btnMas" onClick={showMore}>
-                        {flag ? 'Mostrar más' : 'Mostrar menos'}
-                    </button>
-                </section>
-            </main>
-            <aside>
-                <img src={Logo} alt="logo" />
-                <h2>Barra lateral</h2>
-                <ul>
-                    <li>
-                        <a href="#">Enlace 1</a>
-                    </li>
-                    <li>
-                        <a href="#">Enlace 2</a>
-                    </li>
-                    <li>
-                        <a href="#">Enlace 3</a>
-                    </li>
-                </ul>
-                <div className="botones">
-                    <button className="boton" id="cambiarColor" onClick={cambiarColor}>
-                        Cambiar color de fondo
-                    </button>
-                    <button className="boton" id="cambiarTamanio" onClick={cambiarTamanio}>
-                        Cambiar tamaño de letra
-                    </button>
-                    <button className="bot"></button>
-                </div>
-            </aside>
-            <aside>
-                <img src={Logo} alt="logo" />
-                <h2>Barra lateral</h2>
-                <ul>
-                    <li>
-                        <a href="#">Enlace 1</a>
-                    </li>
-                    <li>
-                        <a href="#">Enlace 2</a>
-                    </li>
-                    <li>
-                        <a href="#">Enlace 3</a>
-                    </li>
-                </ul>
-                <div className="botones">
-                    <button className="boton" id="cambiarColor" onClick={cambiarColor}>
-                        Cambiar color de fondo
-                    </button>
-                    <button className="boton" id="cambiarTamanio" onClick={cambiarTamanio}>
-                        Cambiar tamaño de letra
-                    </button>
-                    <button className="boton" id="resetStyles" onClick={resetStyles}>
-                        Resetear Estilos
-                    </button>
-                </div>
-            </aside>
-            <footer>
-                <p>Derechos de autor © 2023 - Mi página web</p>
-            </footer>
-        </div>
-    )
+  return (
+    <div className="container" data-testid='pagina-principal'>
+      <header>
+        <h1>Hotel React</h1>
+        <nav>
+          <ul>
+            <li>
+              <a href="#">Inicio</a>
+            </li>
+            <li>
+              <a href="#">Acerca de</a>
+            </li>
+            <li>
+              <a href="/contacto.html">Contacto</a>
+            </li>
+          </ul>
+        </nav>
+      </header>
+      <main>
+        <section>
+          <h2>Habitaciones disponibles</h2>
+          <div className="habitaciones">
+            <Habitacion tipo="individual" precio="50">
+              <h3>Individual</h3>
+              <p>Habitación individual con una cama individual</p>
+              <ul>
+                <li>Wifi gratuito</li>
+                <li>TV de pantalla plana</li>
+                <li>Aire acondicionado</li>
+              </ul>
+            </Habitacion>
+            <Habitacion tipo="doble" precio="80">
+              <h3>Doble</h3>
+              <p>Habitación doble con dos camas individuales</p>
+              <ul>
+                <li>Wifi gratuito</li>
+                <li>TV de pantalla plana</li>
+                <li>Aire acondicionado</li>
+              </ul>
+            </Habitacion>
+            <Habitacion tipo="triple" precio="110">
+  <h3>Triple</h3>
+  <p>Habitación triple con tres camas individuales</p>
+  <ul>
+    <li>Wifi gratuito</li>
+    <li>TV de pantalla plana</li>
+    <li>Aire acondicionado</li>
+  </ul>
+</Habitacion>
+<Habitacion tipo="suite" precio="200">
+  <h3>Suite</h3>
+  <p>Habitación de lujo con una cama doble y una sala de estar</p>
+  <ul>
+    <li>Wifi gratuito</li>
+    <li>TV de pantalla plana</li>
+    <li>Aire acondicionado</li>
+    <li>Vistas panorámicas</li>
+    <li>Mini-bar</li>
+  </ul>
+</Habitacion>
+</div>
+</section>
+<section>
+  <h2>Instalaciones</h2>
+  <div className="instalaciones">
+    <div>
+      <h3>Piscina</h3>
+      <p>Disfrute de nuestra piscina al aire libre rodeada de jardines</p>
+    </div>
+    <div>
+      <h3>Gimnasio</h3>
+      <p>Ponemos a su disposición un completo gimnasio equipado con máquinas de última generación</p>
+    </div>
+    <div>
+      <h3>Restaurante</h3>
+      <p>Deguste nuestros exquisitos platos elaborados con productos locales</p>
+    </div>
+  </div>
+</section>
+<section id="section3">
+  <h2>Más habitaciones</h2>
+  <button onClick={showMore}>Mostrar más habitaciones</button>
+</section>
+</main>
+<footer>
+  <img src={Logo} alt="Logo UNIR" />
+  <p>© 2022 Hotel React. Todos los derechos reservados.</p>
+</footer>
+</div>
+);
 }
-export default PaginaPrincipal
+export default PaginaPrincipal;
+           
