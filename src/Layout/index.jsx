@@ -1,9 +1,6 @@
 import React from 'react'
-import { AppBar, Toolbar, Container, Typography, Box, IconButton } from '@mui/material'
+import { Container, Box } from '@mui/material'
 
-import { Search, SearchIconWrapper, StyledInputBase } from './component.styled'
-import MenuIcon from '@mui/icons-material/Menu'
-import SearchIcon from '@mui/icons-material/Search'
 function Layout({ children }) {
     return (
         <>
@@ -37,6 +34,22 @@ function Layout({ children }) {
                 </Toolbar>
             </AppBar> */}
             <Container maxWidth="xl">
+                <header>
+                    <h1>Hotel React</h1>
+                    <nav>
+                        <ul>
+                            <li>
+                                <a href="/">Inicio</a>
+                            </li>
+                            <li>
+                                <a href="/PaginaCheckIn">Check In</a>
+                            </li>
+                            <li>
+                                <a href="/contacto">Contacto</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </header>
                 <Box >
                     {children}
                 </Box>

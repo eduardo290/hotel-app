@@ -44,22 +44,6 @@ function PaginaPrincipal() {
 
   return (
     <div className="container" data-testid='pagina-principal'>
-      <header>
-        <h1>Hotel React</h1>
-        <nav>
-          <ul>
-            <li>
-              <a href="#">Inicio</a>
-            </li>
-            <li>
-              <a href="#">Acerca de</a>
-            </li>
-            <li>
-              <a href="/contacto.html">Contacto</a>
-            </li>
-          </ul>
-        </nav>
-      </header>
       <main>
         <section>
           <h2>Habitaciones disponibles</h2>
@@ -83,55 +67,55 @@ function PaginaPrincipal() {
               </ul>
             </Habitacion>
             <Habitacion tipo="triple" precio="110">
-  <h3>Triple</h3>
-  <p>Habitación triple con tres camas individuales</p>
-  <ul>
-    <li>Wifi gratuito</li>
-    <li>TV de pantalla plana</li>
-    <li>Aire acondicionado</li>
-  </ul>
-</Habitacion>
-<Habitacion tipo="suite" precio="200">
-  <h3>Suite</h3>
-  <p>Habitación de lujo con una cama doble y una sala de estar</p>
-  <ul>
-    <li>Wifi gratuito</li>
-    <li>TV de pantalla plana</li>
-    <li>Aire acondicionado</li>
-    <li>Vistas panorámicas</li>
-    <li>Mini-bar</li>
-  </ul>
-</Habitacion>
-</div>
-</section>
-<section>
-  <h2>Instalaciones</h2>
-  <div className="instalaciones">
-    <div>
-      <h3>Piscina</h3>
-      <p>Disfrute de nuestra piscina al aire libre rodeada de jardines</p>
+              <h3>Triple</h3>
+              <p>Habitación triple con tres camas individuales</p>
+              <ul>
+                <li>Wifi gratuito</li>
+                <li>TV de pantalla plana</li>
+                <li>Aire acondicionado</li>
+              </ul>
+            </Habitacion>
+            <Habitacion tipo="suite" precio="200">
+              <h3>Suite</h3>
+              <p>Habitación de lujo con una cama doble y una sala de estar</p>
+              <ul>
+                <li>Wifi gratuito</li>
+                <li>TV de pantalla plana</li>
+                <li>Aire acondicionado</li>
+                <li>Vistas panorámicas</li>
+                <li>Mini-bar</li>
+              </ul>
+            </Habitacion>
+          </div>
+        </section>
+        <section>
+          <h2>Instalaciones</h2>
+          <div className="instalaciones">
+            <div>
+              <h3>Piscina</h3>
+              <p>Disfrute de nuestra piscina al aire libre rodeada de jardines</p>
+            </div>
+            <div>
+              <h3>Gimnasio</h3>
+              <p>Ponemos a su disposición un completo gimnasio equipado con máquinas de última generación</p>
+            </div>
+            <div>
+              <h3>Restaurante</h3>
+              <p>Deguste nuestros exquisitos platos elaborados con productos locales</p>
+            </div>
+          </div>
+        </section>
+        <section id="section3">
+          <h2>Más habitaciones</h2>
+          <button onClick={showMore}>Mostrar más habitaciones</button>
+        </section>
+      </main>
+      <footer>
+        <img src={Logo} alt="Logo UNIR" />
+        <p>© 2022 Hotel React. Todos los derechos reservados.</p>
+      </footer>
     </div>
-    <div>
-      <h3>Gimnasio</h3>
-      <p>Ponemos a su disposición un completo gimnasio equipado con máquinas de última generación</p>
-    </div>
-    <div>
-      <h3>Restaurante</h3>
-      <p>Deguste nuestros exquisitos platos elaborados con productos locales</p>
-    </div>
-  </div>
-</section>
-<section id="section3">
-  <h2>Más habitaciones</h2>
-  <button onClick={showMore}>Mostrar más habitaciones</button>
-</section>
-</main>
-<footer>
-  <img src={Logo} alt="Logo UNIR" />
-  <p>© 2022 Hotel React. Todos los derechos reservados.</p>
-</footer>
-</div>
-);
+  );
 }
 export default PaginaPrincipal;
-           
+

@@ -19,11 +19,11 @@ function App() {
     },
     {
       path: "/checkIn",
-      element: <RegistroCheckIn/>,
+      element: <RegistroCheckIn />,
     },
     {
       path: "/PaginaCheckIn",
-      element: <PaginaCheckIn/>,
+      element: <PaginaCheckIn />,
     }
   ]);
 

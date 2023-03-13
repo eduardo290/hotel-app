@@ -7,7 +7,7 @@ function RegistroCheckIn(props) {
   const [habitacion, setHabitacion] = useState('');
   const [fechaIngreso, setFechaIngreso] = useState('');
   const [fechaFin, setFechaFin] = useState('');
-  const [enviado, setEnviado] = useState(false);
+  const [, setEnviado] = useState(false);
   const [checkIns, setCheckIns] = useState([]);
 
   const handleSubmit = (event) => {
