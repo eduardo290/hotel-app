@@ -45,7 +45,10 @@ function Layout({ children }) {
                                 <a href="/PaginaCheckIn">Check In</a>
                             </li>
                             <li>
-                                <a href="/contacto">Contacto</a>
+                                <a href="/Comentarios">Comentarios</a>
+                            </li>
+                            <li>
+                                <a href="/Mapa">Mapa</a>
                             </li>
                         </ul>
                     </nav>

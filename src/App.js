@@ -17,20 +17,8 @@ function App() {
       element: <PaginaPrincipal />,
     },
     {
-      path: "/detalle/:id",
-      element: <Habitacion />,
-    },
-    {
-      path: "/checkIn",
-      element: <RegistroCheckIn />,
-    },
-    {
       path: "/PaginaCheckIn",
       element: <PaginaCheckIn/>,
-    },
-    {
-      path: "/registroConsumoHabitacion",
-      element: <RegistroConsumoHabitacion/>,
     },
     {
       path: "/Comentarios",

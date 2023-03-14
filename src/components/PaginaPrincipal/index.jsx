@@ -30,22 +30,6 @@ function PaginaPrincipal() {
 
   return (
     <div className="container" data-testid="pagina-principal">
-      <header>
-        <h1>Hotel React</h1>
-        <nav>
-          <ul>
-            <li>
-              <a href="#">Inicio</a>
-            </li>
-            <li>
-              <a href="#">Acerca de</a>
-            </li>
-            <li>
-              <a href="/contacto.html">Contacto</a>
-            </li>
-          </ul>
-        </nav>
-      </header>
       <main>
         <section>
           <h2>Habitaciones disponibles</h2>
