@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Logo from '../../assets/unir.png';
 import Habitacion from '../Habitacion';
+import CatFact from '../CatFact';
 import './styles.css';
 
 
@@ -60,7 +61,13 @@ function PaginaPrincipal() {
       </main>
       <footer>
         <img src={Logo} alt="Logo UNIR" />
-        <p>© {new Date().getFullYear()} Hotel React. Todos los derechos reservados.</p>
+        <p>© {new Date().getFullYear()} Hotel React. Todos los derechos reservados. </p>
+
+        <div>
+      <h3>Cat Facts (consumo api)  [Dato curioso sobre gato]</h3>
+      <CatFact />
+    </div>
+
 </footer>
 </div>
 );
