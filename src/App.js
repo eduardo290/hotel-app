@@ -3,6 +3,7 @@ import ListaHabitaciones from './components/ListaHabitaciones'
 import Habitacion from './components/Habitacion'
 import RegistroCheckIn from './components/RegistroCheckIn'
 import PaginaCheckIn from './components/PaginaCheckIn'
+import RegistroConsumoHabitacion from './components/registroConsumoHabitacion/RegistroConsumoHabitacion'
 import Layout from "./Layout"
 import './App.css';
 
@@ -24,6 +25,10 @@ function App() {
     {
       path: "/PaginaCheckIn",
       element: <PaginaCheckIn/>,
+    },
+    {
+      path: "/registroConsumoHabitacion",
+      element: <RegistroConsumoHabitacion/>,
     }
   ]);
 

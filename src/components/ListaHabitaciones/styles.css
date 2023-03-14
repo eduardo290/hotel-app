@@ -1,212 +1,157 @@
-/* Estilos generales */
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-  }
-  
-  .container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 20px;
-  }
-  
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    margin: 0;
-  }
-  
-  ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-  
-  a {
-    text-decoration: none;
-    color: #333;
-  }
-  
-  a:hover {
-    color: #777;
-  }
-  
-  header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 20px;
-    border-bottom: 1px solid #ccc;
-  }
-  
-  nav ul {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  nav li {
-    margin-left: 20px;
-  }
-  
-  main {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    padding-top: 20px;
-  }
-  
-  section {
-    flex-basis: 49%;
-    margin-bottom: 40px;
-  }
-  
-  h2 {
-    font-size: 24px;
-    font-weight: bold;
-    margin-bottom: 20px;
-  }
-  
-  .habitaciones {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-  }
-  
-  .instalaciones {
-    display: flex;
-    gap: 40px;
-  }
-  
-  .instalaciones div {
-    flex-basis: 33.33%;
-  }
-  
-  section#section3 {
-    text-align: center;
-  }
-  
-  section#section3 ul {
-    margin-top: 20px;
-  }
-  
-  section#section3 button {
-    border: none;
-    background-color: #333;
-    color: #fff;
-    padding: 10px 20px;
-    border-radius: 5px;
-    cursor: pointer;
-  }
-  
-  section#section3 button:hover {
-    background-color: #777;
-  }
-  
-  footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 1px solid #ccc;
-  }
-  
-  footer img {
-    height: 40px;
-  }
-  
-  footer p {
-    margin: 0;
-    font-size: 14px;
-  }
-  
-  /* Estilos de las habitaciones */
-  .habitacion {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    padding: 20px;
-    flex-basis: calc(50% - 10px);
-  }
-  
-  .habitacion h3 {
-    margin-top: 0;
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 10px;
-  }
-  
-  .habitacion p {
-    margin-top: 0;
-    font-size: 16px;
-    margin-bottom: 10px;
-  }
-  
-  .habitacion ul {
-    margin: 0;
-    padding: 0;
-    list-style: none;
-  }
-  
-  .habitacion li {
-    margin-bottom: 10px;
-  }
-  
-  .habitacion li:before {
-    content: "•";
-    margin-right: 5px;
-    color: #333;
-  }
-  
-  .habitacion .precio {
-    margin-top: 10px;
-    font-size: 24px;
-    font-weight: bold;
-    color: #333;
-  }
-  
-  .habitacion .precio span {
-    font-size: 16px;
-    font-weight: normal;
-    color: #777;
-  }
-  
-  .habitacion {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    padding: 20px;
-    border: 1px solid #ccc;
-    margin-bottom: 20px;
-  }
-  
-  .habitacion h3 {
-    font-size: 24px;
-    margin-bottom: 10px;
-  }
-  
-  .habitacion p {
-    font-size: 18px;
-    margin-bottom: 10px;
-  }
-  
-  .habitacion ul {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-  
-  .habitacion li {
-    font-size: 16px;
-    margin-bottom: 5px;
-  }
-  
-  .habitacion img {
-    max-width: 100%;
-    height: auto;
-    margin-bottom: 10px;
-  }  
+/* Colores */
+:root {
+  --primary-color: #2196f3;
+  --primary-dark-color: #1769aa;
+  --primary-light-color: #4dabf5;
+  --secondary-color: #ffc107;
+  --secondary-dark-color: #b28704;
+  --secondary-light-color: #ffd54f;
+  --background-color: #fafafa;
+  --text-color: #212121;
+  --border-color: #e0e0e0;
+}
+
+/* Contenedor principal */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: var(--background-color);
+}
+
+/* Encabezado */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+header h1 {
+  font-size: 36px;
+  color: var(--primary-color);
+}
+
+header nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+header nav ul li {
+  margin-left: 20px;
+}
+
+header nav ul li:first-child {
+  margin-left: 0;
+}
+
+header nav ul li a {
+  text-decoration: none;
+  color: var(--text-color);
+}
+
+header nav ul li a:hover {
+  color: var(--primary-dark-color);
+}
+
+/* Habitaciones */
+.habitaciones {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  grid-gap: 20px;
+}
+
+/* Habitación */
+.habitacion {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.habitacion:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.habitacion img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 4px;
+}
+
+.habitacion .tipo {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--text-color);
+  margin-top: 10px;
+}
+
+.habitacion .precio {
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--secondary-color);
+  margin-top: 10px;
+}
+
+.habitacion .disponibilidad {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  font-size: 18px;
+  font-weight: 500;
+  color: #fff;
+  background-color: var(--primary-color);
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+.habitacion .consumo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 10px;
+  border-top: 1px solid var(--border-color);
+  padding-top: 10px;
+}
+
+.habitacion .consumo p {
+  margin: 0;
+  font-size: 18px;
+   color: #444;
+}
+
+.habitacion .boton {
+display: flex;
+justify-content: center;
+align-items: center;
+background-color: #3498db;
+color: #fff;
+border: none;
+width: 100%;
+height: 50px;
+font-size: 20px;
+cursor: pointer;
+transition: background-color 0.3s ease;
+}
+
+.habitacion .boton:hover {
+background-color: #2980b9;
+}
+
+.habitacion .boton:focus {
+outline: none;
+}
+
+.habitacion .boton:active {
+background-color: #1e6091;
+transition: none;
+}
