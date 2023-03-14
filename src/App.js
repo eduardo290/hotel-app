@@ -8,7 +8,7 @@ import Comentarios from './components/Comentarios'
 import Mapa from './components/Mapa'
 import Layout from "./Layout"
 import './App.css';
-
+      /* Henry Loez Pardo - Eduardo Luis Cano Castro */
 
 function App() {
   const router = createBrowserRouter([

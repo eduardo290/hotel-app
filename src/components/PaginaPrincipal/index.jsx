@@ -32,6 +32,9 @@ function PaginaPrincipal() {
   return (
     <div className="container" data-testid="pagina-principal">
       <main>
+
+      {/* Henry Loez Pardo - Eduardo Luis Cano Castro */}
+
         <section>
           <h2>Habitaciones disponibles</h2>
           <div className="habitaciones">
