@@ -25,7 +25,6 @@ function Habitacion({ tipo, consumo }) {
     );
     setReservado(estaReservado);
 
-<<<<<<< HEAD
     const consumosGuardados = JSON.parse(
       localStorage.getItem("consumos") || "{}"
     );
@@ -50,18 +49,6 @@ function Habitacion({ tipo, consumo }) {
   };
   
   
-=======
-  useEffect(() => {
-    fetch('https://picsum.photos/200')
-      .then(response => {
-        setImagen(response.url);
-      })
-      .catch(error => {
-        console.error('Error obteniendo la imagen', error);
-      });
-  }, []);
-
->>>>>>> 2d86e1f44cf30b44f3189c71fd84613bd76bbd55
   function reservar() {
     const reservasGuardadas = JSON.parse(
       localStorage.getItem("reservas") || "[]"
@@ -86,7 +73,6 @@ function Habitacion({ tipo, consumo }) {
 
   return (
     <div className={`habitacion ${reservado ? "reservado" : ""}`}>
-<<<<<<< HEAD
       <p>Tipo de habitación: {tipo}</p>
       <p>Precio por noche: ${precio}</p>
       <p>Consumo actual:</p>
@@ -97,12 +83,6 @@ function Habitacion({ tipo, consumo }) {
       </ul>
       <button onClick={reservar} disabled={reservado}>
         {reservado ? "Reservado" : `Reservar por $${precios[tipo]}`}
-=======
-      {imagen && <img src={imagen} alt="habitación" />}
-      {children}
-      <button onClick={reservar} disabled={reservado}>
-        {reservado ? "Reservado" : "Reservar por $" + precio}
->>>>>>> 2d86e1f44cf30b44f3189c71fd84613bd76bbd55
       </button>
       <RegistroConsumoHabitacion
         numero={tipo}
