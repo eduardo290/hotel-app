@@ -59,13 +59,14 @@ function PaginaPrincipal() {
         </section>
 
       </main>
+      <h3>Cat Facts (consumo api)  [Dato curioso sobre gato]</h3>
+      <CatFact />
       <footer>
         <img src={Logo} alt="Logo UNIR" />
         <p>© {new Date().getFullYear()} Hotel React. Todos los derechos reservados. </p>
 
         <div>
-      <h3>Cat Facts (consumo api)  [Dato curioso sobre gato]</h3>
-      <CatFact />
+
     </div>
 
 </footer>
