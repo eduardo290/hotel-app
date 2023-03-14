@@ -3,18 +3,6 @@ import RegistroConsumoHabitacion from '../registroConsumoHabitacion/RegistroCons
 
 function Habitacion({ tipo, consumo }) {
   const [reservado, setReservado] = useState(false);
-  const [consumos, setConsumos] = useState({
-    minibar: 0,
-    restaurante: 0,
-    spa: 0,
-  });
-
-  const precios = {
-    individual: 100,
-    doble: 150,
-    suite: 300
-  };
-  const precio = precios[tipo]; // Get the standard price for this room type
 
   useEffect(() => {
     const reservasGuardadas = JSON.parse(
@@ -35,20 +23,7 @@ function Habitacion({ tipo, consumo }) {
     };
     setConsumos(consumosHabitacion);
   }, [tipo]);
-  const actualizarConsumos = (nuevosConsumos) => {
-    setConsumos((prevConsumos) => {
-      const nuevosConsumosHabitacion = { 
-        minibar: (prevConsumos.minibar || 0) + (nuevosConsumos.minibar || 0), 
-        restaurante: (prevConsumos.restaurante || 0) + (nuevosConsumos.restaurante || 0), 
-        spa: (prevConsumos.spa || 0) + (nuevosConsumos.spa || 0) 
-      };
-      const nuevosConsumosTotales = { ...prevConsumos, ...nuevosConsumosHabitacion };
-      localStorage.setItem("consumos", JSON.stringify(nuevosConsumosTotales));
-      return nuevosConsumosTotales;
-    });
-  };
-  
-  
+
   function reservar() {
     const reservasGuardadas = JSON.parse(
       localStorage.getItem("reservas") || "[]"
@@ -73,16 +48,9 @@ function Habitacion({ tipo, consumo }) {
 
   return (
     <div className={`habitacion ${reservado ? "reservado" : ""}`}>
-      <p>Tipo de habitación: {tipo}</p>
-      <p>Precio por noche: ${precio}</p>
-      <p>Consumo actual:</p>
-      <ul>
-        <li>Minibar: ${consumos.minibar.toFixed(2)}</li>
-        <li>Restaurante: ${consumos.restaurante.toFixed(2)}</li>
-        <li>Spa: ${consumos.spa.toFixed(2)}</li>
-      </ul>
+      {children}
       <button onClick={reservar} disabled={reservado}>
-        {reservado ? "Reservado" : `Reservar por $${precios[tipo]}`}
+        {reservado ? "Reservado" : "Reservar por $"+precio}
       </button>
       <RegistroConsumoHabitacion
         numero={tipo}

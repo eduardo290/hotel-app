@@ -22,23 +22,11 @@ function App() {
     },
     {
       path: "/checkIn",
-      element: <RegistroCheckIn/>,
+      element: <RegistroCheckIn />,
     },
     {
       path: "/PaginaCheckIn",
       element: <PaginaCheckIn/>,
-    },
-    {
-      path: "/registroConsumoHabitacion",
-      element: <RegistroConsumoHabitacion/>,
-    },
-    {
-      path: "/Comentarios",
-      element: <Comentarios/>,
-    },
-    {
-      path: "/Mapa",
-      element: <Mapa/>,
     }
   ]);
 
