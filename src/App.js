@@ -1,9 +1,11 @@
 import { RouterProvider, createBrowserRouter } from 'react-router-dom';
-import ListaHabitaciones from './components/ListaHabitaciones'
+import PaginaPrincipal from './components/PaginaPrincipal'
 import Habitacion from './components/Habitacion'
 import RegistroCheckIn from './components/RegistroCheckIn'
 import PaginaCheckIn from './components/PaginaCheckIn'
 import RegistroConsumoHabitacion from './components/registroConsumoHabitacion/RegistroConsumoHabitacion'
+import Comentarios from './components/Comentarios'
+import Mapa from './components/Mapa'
 import Layout from "./Layout"
 import './App.css';
 
@@ -12,7 +14,7 @@ function App() {
   const router = createBrowserRouter([
     {
       path: "/",
-      element: <ListaHabitaciones />,
+      element: <PaginaPrincipal />,
     },
     {
       path: "/detalle/:id",
@@ -29,6 +31,14 @@ function App() {
     {
       path: "/registroConsumoHabitacion",
       element: <RegistroConsumoHabitacion/>,
+    },
+    {
+      path: "/Comentarios",
+      element: <Comentarios/>,
+    },
+    {
+      path: "/Mapa",
+      element: <Mapa/>,
     }
   ]);
 

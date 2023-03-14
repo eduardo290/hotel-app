@@ -1,33 +1,48 @@
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import TablaCheckIn from './TablaCheckIn';
+import TablaCheckIn from '../TablaCheckIn';
 
 describe('TablaCheckIn', () => {
-  const checkIns = [
+  const mockCheckIns = [
     {
       nombre: 'Juan',
       apellido: 'Pérez',
       habitacion: '101',
-      fechaIngreso: '2022-02-15',
-      fechaFin: '2022-02-20',
+      fechaIngreso: '2023-03-10',
+      fechaFin: '2023-03-15',
     },
     {
       nombre: 'María',
       apellido: 'González',
       habitacion: '102',
-      fechaIngreso: '2022-02-18',
-      fechaFin: '2022-02-23',
+      fechaIngreso: '2023-03-11',
+      fechaFin: '2023-03-13',
     },
   ];
 
-  it('renders a table with check-in data', () => {
-    render(<TablaCheckIn checkIns={checkIns} />);
+  it('renders the table with the check-ins data', () => {
+    render(<TablaCheckIn checkIns={mockCheckIns} />);
 
-    expect(screen.getByText('Juan Pérez')).toBeInTheDocument();
+    expect(screen.getByText('Juan')).toBeInTheDocument();
+    expect(screen.getByText('Pérez')).toBeInTheDocument();
     expect(screen.getByText('101')).toBeInTheDocument();
-    expect(screen.getByText('2022-02-15')).toBeInTheDocument();
-    expect(screen.getByText('2022-02-20')).toBeInTheDocument();
-    expect(screen.getByText('María González')).toBeInTheDocument();
+    expect(screen.getByText('2023-03-10')).toBeInTheDocument();
+    expect(screen.getByText('2023-03-15')).toBeInTheDocument();
+    expect(screen.getByText('5')).toBeInTheDocument();
+
+    expect(screen.getByText('María')).toBeInTheDocument();
+    expect(screen.getByText('González')).toBeInTheDocument();
     expect(screen.getByText('102')).toBeInTheDocument();
-    expect(screen.getByText('2022-02-18')).toBeInTheDocument();
-    expect(screen.getByText('2022-02-23
+    expect(screen.getByText('2023-03-11')).toBeInTheDocument();
+    expect(screen.getByText('2023-03-13')).toBeInTheDocument();
+    expect(screen.getByText('2')).toBeInTheDocument();
+  });
+
+  it('renders the summary information', () => {
+    render(<TablaCheckIn checkIns={mockCheckIns} />);
+
+    expect(screen.getByText('Total de check-ins: 2')).toBeInTheDocument();
+    expect(screen.getByText('Total de días: 7')).toBeInTheDocument();
+    expect(screen.getByText('Promedio de días por check-in: 3.50')).toBeInTheDocument();
+  });
+});

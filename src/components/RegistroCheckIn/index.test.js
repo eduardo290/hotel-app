@@ -1,36 +1,47 @@
-import React from 'react';
-import { render, fireEvent } from '@testing-library/react';
-import RegistroCheckIn from '.';
+import { render, screen, fireEvent } from '@testing-library/react';
+import RegistroCheckIn from '../RegistroCheckIn';
 
 describe('RegistroCheckIn', () => {
-  test('renders check-in form with inputs and button', () => {
-    const { getByLabelText, getByText } = render(<RegistroCheckIn />);
-
-    expect(getByLabelText(/name/i)).toBeInTheDocument();
-    expect(getByLabelText(/email/i)).toBeInTheDocument();
-    expect(getByLabelText(/phone/i)).toBeInTheDocument();
-    expect(getByText(/check in/i)).toBeInTheDocument();
+  it('renders the form correctly', () => {
+    render(<RegistroCheckIn />);
+    expect(screen.getByLabelText('Nombre:')).toBeInTheDocument();
+    expect(screen.getByLabelText('Apellido:')).toBeInTheDocument();
+    expect(screen.getByLabelText('Habitación:')).toBeInTheDocument();
+    expect(screen.getByLabelText('Fecha de ingreso:')).toBeInTheDocument();
+    expect(screen.getByLabelText('Fecha de fin:')).toBeInTheDocument();
+    expect(screen.getByRole('button')).toBeInTheDocument();
   });
 
-  test('submits form with user input values', () => {
-    const mockOnSubmit = jest.fn();
-    const { getByLabelText, getByText } = render(<RegistroCheckIn onSubmit={mockOnSubmit} />);
+  it('submits the form with the correct data', () => {
+    const handleSubmit = jest.fn();
+    render(<RegistroCheckIn onSubmit={handleSubmit} />);
 
-    const nameInput = getByLabelText(/name/i);
-    const emailInput = getByLabelText(/email/i);
-    const phoneInput = getByLabelText(/phone/i);
-    const submitButton = getByText(/check in/i);
+    const nombreInput = screen.getByLabelText('Nombre:');
+    fireEvent.change(nombreInput, { target: { value: 'John' } });
 
-    fireEvent.change(nameInput, { target: { value: 'John Doe' } });
-    fireEvent.change(emailInput, { target: { value: 'john.doe@example.com' } });
-    fireEvent.change(phoneInput, { target: { value: '123-456-7890' } });
+    const apellidoInput = screen.getByLabelText('Apellido:');
+    fireEvent.change(apellidoInput, { target: { value: 'Doe' } });
+
+    const habitacionInput = screen.getByLabelText('Habitación:');
+    fireEvent.change(habitacionInput, { target: { value: '101' } });
+
+    const fechaIngresoInput = screen.getByLabelText('Fecha de ingreso:');
+    fireEvent.change(fechaIngresoInput, { target: { value: '2023-03-15' } });
+
+    const fechaFinInput = screen.getByLabelText('Fecha de fin:');
+    fireEvent.change(fechaFinInput, { target: { value: '2023-03-20' } });
+
+    const submitButton = screen.getByRole('button');
     fireEvent.click(submitButton);
 
-    expect(mockOnSubmit).toHaveBeenCalledTimes(1);
-    expect(mockOnSubmit).toHaveBeenCalledWith({
-      name: 'John Doe',
-      email: 'john.doe@example.com',
-      phone: '123-456-7890',
+    expect(handleSubmit).toHaveBeenCalledTimes(1);
+    expect(handleSubmit).toHaveBeenCalledWith({
+      nombre: 'John',
+      apellido: 'Doe',
+      habitacion: '101',
+      fechaIngreso: '2023-03-15',
+      fechaFin: '2023-03-20',
     });
   });
+
 });
